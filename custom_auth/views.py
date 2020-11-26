@@ -1,3 +1,4 @@
+from django.contrib.auth import logout
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
@@ -23,6 +24,7 @@ def sign_in(request):
 def sign_out(request):
     # Clear out the user and token
     remove_user_and_token(request)
+    logout(request)
 
     return HttpResponseRedirect(reverse('home'))
 
